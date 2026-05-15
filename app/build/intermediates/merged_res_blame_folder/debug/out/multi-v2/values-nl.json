@@ -1,0 +1,36 @@
+{
+    "logs": [
+        {
+            "outputFile": "com.streamcore.tv.app-mergeDebugResources-6:/values-nl/values-nl.xml",
+            "map": [
+                {
+                    "source": "/Users/yalesdjemmane/.gradle/caches/transforms-4/0a1b5160d395e9b290c7c28d24f38451/transformed/media3-exoplayer-1.2.1/res/values-nl/values-nl.xml",
+                    "from": {
+                        "startLines": "2,3,4,5,6,7,8,9,10",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,126,190,254,321,398,467,556,639",
+                        "endColumns": "70,63,63,66,76,68,88,82,71",
+                        "endOffsets": "121,185,249,316,393,462,551,634,706"
+                    }
+                },
+                {
+                    "source": "/Users/yalesdjemmane/.gradle/caches/transforms-4/5463bc2aee554897683c8726d0904fe1/transformed/core-1.8.0/res/values-nl/values-nl.xml",
+                    "from": {
+                        "startLines": "2",
+                        "startColumns": "4",
+                        "startOffsets": "55",
+                        "endColumns": "100",
+                        "endOffsets": "151"
+                    },
+                    "to": {
+                        "startLines": "11",
+                        "startColumns": "4",
+                        "startOffsets": "711",
+                        "endColumns": "100",
+                        "endOffsets": "807"
+                    }
+                }
+            ]
+        }
+    ]
+}

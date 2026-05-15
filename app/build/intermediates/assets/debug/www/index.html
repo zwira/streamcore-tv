@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=1920"/>
+  <title>StreamCore TV</title>
+  <link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<!-- ═══ LOGIN ═══ -->
+<div id="pg-login" class="page active">
+  <div class="login-bg"></div>
+  <div class="login-card">
+    <div class="login-logo"><div class="logo-dot"></div><span>StreamCore</span></div>
+    <p class="login-sub">Connectez votre service IPTV</p>
+    <div id="saved-list"></div>
+    <div id="login-form">
+      <div class="tv-field"><label>URL Serveur</label><input id="f-url" type="url" placeholder="http://serveur.com:8080" autocomplete="off"/></div>
+      <div class="tv-field-row">
+        <div class="tv-field"><label>Utilisateur</label><input id="f-user" type="text" placeholder="username" autocomplete="off"/></div>
+        <div class="tv-field"><label>Mot de passe</label><input id="f-pass" type="password" placeholder="••••••••"/></div>
+      </div>
+      <div id="login-err" class="err hide"></div>
+      <button id="btn-login" class="tv-btn-primary" onclick="doLogin()">Se connecter</button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ HOME ═══ -->
+<div id="pg-home" class="page">
+  <div class="home-bg" id="home-bg"></div>
+  <div class="home-content">
+    <div class="home-greeting" id="home-greeting">StreamCore</div>
+    <div class="home-tiles" id="home-tiles">
+      <div class="htile htile-live" tabindex="0" data-action="nav" data-sec="live">
+        <div class="htile-icon">📡</div>
+        <div class="htile-label">Live TV</div>
+        <div class="htile-sub" id="tile-live-sub">Chaînes</div>
+        <div class="htile-live-badge"><span></span>EN DIRECT</div>
+      </div>
+      <div class="htile htile-movies" tabindex="0" data-action="nav" data-sec="movies">
+        <div class="htile-icon">🎬</div>
+        <div class="htile-label">Films</div>
+        <div class="htile-sub" id="tile-movies-sub">VOD</div>
+      </div>
+      <div class="htile htile-series" tabindex="0" data-action="nav" data-sec="series">
+        <div class="htile-icon">📺</div>
+        <div class="htile-label">Séries</div>
+        <div class="htile-sub" id="tile-series-sub">VOD</div>
+      </div>
+      <div class="htile htile-settings" tabindex="0" data-action="nav" data-sec="settings">
+        <div class="htile-icon">⚙️</div>
+        <div class="htile-label">Paramètres</div>
+        <div class="htile-sub">Compte</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LIVE TV ═══ -->
+<div id="pg-live" class="page">
+  <div class="tv-layout">
+    <!-- Sidebar catégories -->
+    <div class="tv-sidebar" id="tv-sidebar">
+      <div class="sidebar-title">Catégories</div>
+      <div class="sidebar-list" id="cat-list"></div>
+    </div>
+    <!-- Liste chaînes (virtual scroll) -->
+    <div class="tv-main">
+      <div class="tv-main-header">
+        <button class="tv-back-btn" data-action="back">← Retour</button>
+        <div class="tv-search-box">
+          <input id="live-sq" type="text" placeholder="🔍  Rechercher…" oninput="filterLive(this.value)"/>
+        </div>
+      </div>
+      <div class="ch-list-wrap" id="ch-list-wrap">
+        <div class="ch-list" id="ch-list"></div>
+      </div>
+    </div>
+    <!-- Info EPG -->
+    <div class="tv-info" id="tv-info">
+      <div class="tv-info-placeholder" id="tv-info-ph">
+        <div style="font-size:48px">📡</div>
+        <div>Sélectionnez une chaîne</div>
+      </div>
+      <div class="tv-info-content hide" id="tv-info-content">
+        <div class="tv-info-logo" id="tv-info-logo"></div>
+        <div class="tv-info-name" id="tv-info-name"></div>
+        <div class="tv-info-now" id="tv-info-now"></div>
+        <div class="tv-info-epg" id="tv-info-epg"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ VOD (Films/Séries) ═══ -->
+<div id="pg-vod" class="page">
+  <div class="vod-header">
+    <button class="tv-back-btn" data-action="back">← Retour</button>
+    <span class="vod-title" id="vod-title">Films</span>
+    <div class="tv-search-box">
+      <input id="vod-sq" type="text" placeholder="🔍  Rechercher…" oninput="filterVod(this.value)"/>
+    </div>
+    <!-- Category dropdown -->
+    <div class="tv-cat-dd">
+      <button class="tv-cat-btn" id="cat-btn" onclick="toggleCatMenu()">
+        <span id="cat-label">Toutes les catégories</span> ▾
+      </button>
+      <div class="tv-cat-menu hide" id="cat-menu"></div>
+    </div>
+    <div class="vod-sorts">
+      <button class="tv-sort active" onclick="setSort('name',this)">A–Z</button>
+      <button class="tv-sort" onclick="setSort('rating',this)">★ Note</button>
+      <button class="tv-sort" onclick="setSort('new',this)">Nouveau</button>
+    </div>
+  </div>
+  <!-- Poster grid (virtual) -->
+  <div class="poster-grid-wrap" id="poster-grid-wrap">
+    <div class="poster-grid" id="poster-grid"></div>
+  </div>
+</div>
+
+<!-- ═══ DETAIL ═══ -->
+<div id="pg-detail" class="page">
+  <div class="detail-bg" id="det-bg"></div>
+  <div class="detail-fade"></div>
+  <div class="detail-content">
+    <button class="tv-back-btn" data-action="back">← Retour</button>
+    <div class="detail-body">
+      <img class="detail-poster" id="det-poster" src="" alt=""/>
+      <div class="detail-info">
+        <div class="detail-title" id="det-title"></div>
+        <div class="detail-meta" id="det-meta"></div>
+        <div class="detail-overview" id="det-overview"></div>
+        <div class="detail-cast" id="det-cast"></div>
+        <div class="detail-actions">
+          <button class="tv-btn-primary tv-btn-big" id="det-play-btn">▶ Lire</button>
+          <button class="tv-btn-secondary tv-btn-big" id="det-fav-btn">☆ Favoris</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ SERIE ═══ -->
+<div id="pg-serie" class="page">
+  <div class="detail-bg" id="serie-bg"></div>
+  <div class="detail-fade"></div>
+  <div class="detail-content">
+    <button class="tv-back-btn" data-action="back">← Retour</button>
+    <div class="serie-header" id="serie-header"></div>
+    <div class="season-tabs" id="season-tabs"></div>
+    <div class="ep-list" id="ep-list"></div>
+  </div>
+</div>
+
+<!-- ═══ SETTINGS ═══ -->
+<div id="pg-settings" class="page">
+  <div class="simple-header">
+    <button class="tv-back-btn" data-action="back">← Retour</button>
+    <span class="vod-title">Paramètres</span>
+  </div>
+  <div class="settings-body" id="settings-body"></div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div id="toast" class="tv-toast hide"></div>
+
+<script src="app.js"></script>
+</body>
+</html>

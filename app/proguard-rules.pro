@@ -1,0 +1,3 @@
+-keep class com.streamcore.tv.MainActivity$StreamCoreBridge { *; }
+-keep class androidx.media3.** { *; }
+-dontwarn androidx.media3.**

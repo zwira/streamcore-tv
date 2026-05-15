@@ -1,0 +1,9 @@
+R_DEF: Internal format may change without notice
+local
+drawable ic_launcher
+id surface_view
+id webview
+layout activity_main
+layout activity_player
+style AppTheme
+style PlayerTheme

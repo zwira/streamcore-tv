@@ -1,0 +1,25 @@
+plugins {
+    id 'com.android.application'
+}
+android {
+    namespace 'com.streamcore.tv'
+    compileSdk 34
+    defaultConfig {
+        applicationId "com.streamcore.tv"
+        minSdk 24
+        targetSdk 34
+        versionCode 7
+        versionName "7.3"
+    }
+    buildTypes {
+        release { minifyEnabled false }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+dependencies {
+    implementation 'androidx.media3:media3-exoplayer:1.2.1'
+    implementation 'androidx.media3:media3-exoplayer-hls:1.2.1'
+}
