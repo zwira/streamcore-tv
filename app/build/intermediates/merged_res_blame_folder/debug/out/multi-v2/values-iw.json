@@ -4,20 +4,20 @@
             "outputFile": "com.streamcore.tv.app-mergeDebugResources-6:/values-iw/values-iw.xml",
             "map": [
                 {
-                    "source": "/Users/yalesdjemmane/.gradle/caches/transforms-4/5463bc2aee554897683c8726d0904fe1/transformed/core-1.8.0/res/values-iw/values-iw.xml",
+                    "source": "/Users/yalesdjemmane/.gradle/caches/transforms-4/0a46d52ce3de952ec7b9586e5d3e1bb2/transformed/core-1.12.0/res/values-iw/values-iw.xml",
                     "from": {
-                        "startLines": "2",
-                        "startColumns": "4",
-                        "startOffsets": "55",
-                        "endColumns": "100",
-                        "endOffsets": "151"
+                        "startLines": "2,3,4,5,6,7,8,9",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,149,251,348,445,546,646,752",
+                        "endColumns": "93,101,96,96,100,99,105,100",
+                        "endOffsets": "144,246,343,440,541,641,747,848"
                     },
                     "to": {
-                        "startLines": "11",
-                        "startColumns": "4",
-                        "startOffsets": "669",
-                        "endColumns": "100",
-                        "endOffsets": "765"
+                        "startLines": "2,3,4,5,6,7,8,18",
+                        "startColumns": "4,4,4,4,4,4,4,4",
+                        "startOffsets": "55,149,251,348,445,546,646,1366",
+                        "endColumns": "93,101,96,96,100,99,105,100",
+                        "endOffsets": "144,246,343,440,541,641,747,1462"
                     }
                 },
                 {
@@ -28,6 +28,13 @@
                         "startOffsets": "55,120,179,246,311,385,447,527,607",
                         "endColumns": "64,58,66,64,73,61,79,79,61",
                         "endOffsets": "115,174,241,306,380,442,522,602,664"
+                    },
+                    "to": {
+                        "startLines": "9,10,11,12,13,14,15,16,17",
+                        "startColumns": "4,4,4,4,4,4,4,4,4",
+                        "startOffsets": "752,817,876,943,1008,1082,1144,1224,1304",
+                        "endColumns": "64,58,66,64,73,61,79,79,61",
+                        "endOffsets": "812,871,938,1003,1077,1139,1219,1299,1361"
                     }
                 }
             ]

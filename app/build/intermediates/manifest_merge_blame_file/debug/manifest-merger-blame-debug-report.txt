@@ -9,95 +9,119 @@
 9        android:targetSdkVersion="34" />
 10
 11    <uses-permission android:name="android.permission.INTERNET" />
-11-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:4:5-66
-11-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:4:22-64
+11-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:3:5-66
+11-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:3:22-64
 12    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-12-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:5:5-78
-12-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:5:22-76
+12-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:4:5-78
+12-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:4:22-76
 13    <uses-permission
-13-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:6:5-107
+13-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:5:5-107
 14        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
-14-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:6:22-78
+14-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:5:22-78
 15        android:maxSdkVersion="28" />
-15-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:6:79-105
-16
-17    <!-- Fire TV / Android TV: no touchscreen required -->
+15-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:5:79-105
+16    <uses-permission android:name="android.permission.REQUEST_INSTALL_PACKAGES" />
+16-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:6:5-82
+16-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:6:22-80
+17
 18    <uses-feature
-18-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:5-89
+18-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:7:5-89
 19        android:name="android.hardware.touchscreen"
-19-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:19-62
+19-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:7:19-62
 20        android:required="false" />
-20-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:63-87
+20-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:7:63-87
 21    <uses-feature
-21-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:10:5-86
+21-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:8:5-86
 22        android:name="android.software.leanback"
-22-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:10:19-59
+22-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:8:19-59
 23        android:required="false" />
-23-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:10:60-84
+23-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:8:60-84
 24
-25    <application
-25-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:12:5-44:19
-26        android:allowBackup="false"
-26-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:13:9-36
-27        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-27-->[androidx.core:core:1.8.0] /Users/yalesdjemmane/.gradle/caches/transforms-4/5463bc2aee554897683c8726d0904fe1/transformed/core-1.8.0/AndroidManifest.xml:24:18-86
-28        android:debuggable="true"
-29        android:extractNativeLibs="false"
-30        android:hardwareAccelerated="true"
-30-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:18:9-43
-31        android:icon="@drawable/ic_launcher"
-31-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:14:9-45
-32        android:label="StreamCore"
-32-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:15:9-35
-33        android:largeHeap="false"
-33-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:19:9-34
-34        android:theme="@style/AppTheme"
-34-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:16:9-40
-35        android:usesCleartextTraffic="true" >
-35-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:17:9-44
-36
-37        <!-- Main UI activity -->
-38        <activity
-38-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:22:9-34:20
-39            android:name="com.streamcore.tv.MainActivity"
-39-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:23:13-41
-40            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
-40-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:24:13-90
-41            android:exported="true"
-41-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:25:13-36
-42            android:screenOrientation="landscape"
-42-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:27:13-50
-43            android:windowSoftInputMode="adjustPan" >
-43-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:26:13-52
-44            <intent-filter>
-44-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:28:13-33:29
-45                <action android:name="android.intent.action.MAIN" />
-45-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:29:17-68
-45-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:29:25-66
-46
-47                <category android:name="android.intent.category.LAUNCHER" />
-47-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:30:17-76
-47-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:30:27-74
-48                <!-- Fire TV launcher -->
-49                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
-49-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:32:17-85
-49-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:32:27-83
-50            </intent-filter>
-51        </activity>
-52
-53        <!-- ExoPlayer activity -->
+25    <permission
+25-->[androidx.core:core:1.12.0] /Users/yalesdjemmane/.gradle/caches/transforms-4/0a46d52ce3de952ec7b9586e5d3e1bb2/transformed/core-1.12.0/AndroidManifest.xml:22:5-24:47
+26        android:name="com.streamcore.tv.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION"
+26-->[androidx.core:core:1.12.0] /Users/yalesdjemmane/.gradle/caches/transforms-4/0a46d52ce3de952ec7b9586e5d3e1bb2/transformed/core-1.12.0/AndroidManifest.xml:23:9-81
+27        android:protectionLevel="signature" />
+27-->[androidx.core:core:1.12.0] /Users/yalesdjemmane/.gradle/caches/transforms-4/0a46d52ce3de952ec7b9586e5d3e1bb2/transformed/core-1.12.0/AndroidManifest.xml:24:9-44
+28
+29    <uses-permission android:name="com.streamcore.tv.DYNAMIC_RECEIVER_NOT_EXPORTED_PERMISSION" />
+29-->[androidx.core:core:1.12.0] /Users/yalesdjemmane/.gradle/caches/transforms-4/0a46d52ce3de952ec7b9586e5d3e1bb2/transformed/core-1.12.0/AndroidManifest.xml:26:5-97
+29-->[androidx.core:core:1.12.0] /Users/yalesdjemmane/.gradle/caches/transforms-4/0a46d52ce3de952ec7b9586e5d3e1bb2/transformed/core-1.12.0/AndroidManifest.xml:26:22-94
+30
+31    <application
+31-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:5-21:19
+32        android:allowBackup="false"
+32-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:18-45
+33        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
+33-->[androidx.core:core:1.12.0] /Users/yalesdjemmane/.gradle/caches/transforms-4/0a46d52ce3de952ec7b9586e5d3e1bb2/transformed/core-1.12.0/AndroidManifest.xml:28:18-86
+34        android:debuggable="true"
+35        android:extractNativeLibs="false"
+36        android:hardwareAccelerated="true"
+36-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:178-212
+37        android:icon="@drawable/ic_launcher"
+37-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:46-82
+38        android:label="StreamCore"
+38-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:83-109
+39        android:theme="@style/AppTheme"
+39-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:110-141
+40        android:usesCleartextTraffic="true" >
+40-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:9:142-177
+41        <activity
+41-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:10:9-16:20
+42            android:name="com.streamcore.tv.MainActivity"
+42-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:10:19-47
+43            android:configChanges="keyboard|keyboardHidden|orientation|screenSize|uiMode"
+43-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:10:48-125
+44            android:exported="true"
+44-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:10:126-149
+45            android:screenOrientation="landscape"
+45-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:10:190-227
+46            android:windowSoftInputMode="adjustPan" >
+46-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:10:150-189
+47            <intent-filter>
+47-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:11:13-15:29
+48                <action android:name="android.intent.action.MAIN" />
+48-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:12:17-68
+48-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:12:25-66
+49
+50                <category android:name="android.intent.category.LAUNCHER" />
+50-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:13:17-76
+50-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:13:27-74
+51                <category android:name="android.intent.category.LEANBACK_LAUNCHER" />
+51-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:14:17-85
+51-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:14:27-83
+52            </intent-filter>
+53        </activity>
 54        <activity
-54-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:37:9-42:49
+54-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:17:9-220
 55            android:name="com.streamcore.tv.PlayerActivity"
-55-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:38:13-43
+55-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:17:19-49
 56            android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-56-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:39:13-83
+56-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:17:50-120
 57            android:exported="false"
-57-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:40:13-37
+57-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:17:121-145
 58            android:screenOrientation="landscape"
-58-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:41:13-50
+58-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:17:146-183
 59            android:theme="@style/PlayerTheme" />
-59-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:42:13-47
-60    </application>
-61
-62</manifest>
+59-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:17:184-218
+60
+61        <provider
+61-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:18:9-20:20
+62            android:name="androidx.core.content.FileProvider"
+62-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:18:19-68
+63            android:authorities="com.streamcore.tv.fileprovider"
+63-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:18:69-121
+64            android:exported="false"
+64-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:18:122-146
+65            android:grantUriPermissions="true" >
+65-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:18:147-181
+66            <meta-data
+66-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:19:13-111
+67                android:name="android.support.FILE_PROVIDER_PATHS"
+67-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:19:24-74
+68                android:resource="@xml/file_paths" />
+68-->/Users/yalesdjemmane/Downloads/streamcore-tv/app/src/main/AndroidManifest.xml:19:75-109
+69        </provider>
+70    </application>
+71
+72</manifest>

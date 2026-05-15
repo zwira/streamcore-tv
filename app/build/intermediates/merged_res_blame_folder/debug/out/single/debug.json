@@ -4,6 +4,10 @@
         "source": "com.streamcore.tv.app-main-10:/drawable/ic_launcher.xml"
     },
     {
+        "merged": "com.streamcore.tv.app-merged_res-8:/xml_file_paths.xml.flat",
+        "source": "com.streamcore.tv.app-main-10:/xml/file_paths.xml"
+    },
+    {
         "merged": "com.streamcore.tv.app-merged_res-8:/layout_activity_player.xml.flat",
         "source": "com.streamcore.tv.app-main-10:/layout/activity_player.xml"
     },

@@ -94,3 +94,23 @@ const fmt=n=>n>=1000?(n/1000).toFixed(1)+'k':String(n);
 const uid=()=>Math.random().toString(36).slice(2,10);
 const ls=k=>{try{return JSON.parse(localStorage.getItem(k));}catch{return null;}};
 const lss=(k,v)=>localStorage.setItem(k,JSON.stringify(v));
+
+async function checkUpdate() {
+  try {
+    const r = await fetch('https://raw.githubusercontent.com/zwira/streamcore-tv/main/version.json');
+    const data = await r.json();
+    const current = window.AndroidBridge ? window.AndroidBridge.getVersion() : '1.0';
+    if (data.version !== current) {
+      showUpdateBanner(data.version, data.apk);
+    }
+  } catch(e) {}
+}
+function showUpdateBanner(version, apkUrl) {
+  const el = document.createElement('div');
+  el.style.cssText = 'position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#e05260;color:#fff;padding:16px 32px;border-radius:14px;font-size:22px;font-weight:700;z-index:9999;cursor:pointer;';
+  el.textContent = 'Mise a jour v' + version + ' disponible — Appuyer pour installer';
+  el.tabIndex = 0;
+  el.onclick = () => { if(window.AndroidBridge) window.AndroidBridge.downloadAndInstall(apkUrl); el.remove(); };
+  document.body.appendChild(el);
+  setTimeout(() => el.focus(), 100);
+}

@@ -7,3 +7,4 @@ layout activity_main
 layout activity_player
 style AppTheme
 style PlayerTheme
+xml file_paths
