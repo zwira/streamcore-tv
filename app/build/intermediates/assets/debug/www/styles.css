@@ -191,3 +191,15 @@ button { cursor:pointer; }
 .spinner { width:48px; height:48px; border:3px solid var(--bg4); border-top-color:var(--acc); border-radius:50%; animation:spin .8s linear infinite; }
 @keyframes spin { to{transform:rotate(360deg);} }
 .hide { display:none !important; }
+
+/* TOUCH */
+* { -webkit-tap-highlight-color: rgba(224,82,96,.3); }
+.p-card:active, .ch-item:active, .htile:active, .ep-item:active, .cat-item:active, .tv-cat-item:active {
+  transform: scale(.96); border-color: var(--acc); background: var(--bg3);
+}
+.ch-list, .poster-grid-wrap, .ep-list, .sidebar-list, .tv-cat-menu {
+  -webkit-overflow-scrolling: touch;
+}
+.ch-item { min-height: 70px; }
+.htile { min-height: 120px; }
+.cat-item, .tv-cat-item { min-height: 52px; }
