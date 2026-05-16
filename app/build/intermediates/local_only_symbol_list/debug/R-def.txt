@@ -5,6 +5,7 @@ id surface_view
 id webview
 layout activity_main
 layout activity_player
+mipmap ic_launcher
 style AppTheme
 style PlayerTheme
 xml file_paths
