@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=1920"/>
+  <title>StreamCore</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Syne:wght@600;700;800&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="styles.css"/>
+  <style>
+    .screen { padding-top:0 !important; }
+    #sc-live { padding-top:0 !important; }
+    body { font-size:16px; }
+    .htile { cursor:pointer; }
+    .htile:focus { transform:translateY(-4px) scale(1.01); border-color:rgba(255,255,255,.14); box-shadow:0 24px 60px rgba(0,0,0,.5); outline:2px solid var(--acc); }
+    .v-card:focus { transform:translateY(-4px); box-shadow:0 16px 40px rgba(0,0,0,.5); outline:2px solid var(--acc); }
+    .ch-row:focus { background:var(--bg2); outline:2px solid var(--acc); }
+    .live-cat-item:focus { background:var(--bg3); outline:2px solid var(--acc); }
+    .ep-item:focus { border-color:var(--acc); background:var(--bg3); outline:none; }
+    .sort-btn, .filter-btn, .cat-dd-btn, .btn-back, .btn-back-sm { cursor:pointer; }
+    .sort-btn:focus, .filter-btn:focus { outline:2px solid var(--acc); }
+    *:focus { outline:none; }
+    .htile:focus, .v-card:focus, .ch-row:focus, .live-cat-item:focus, .ep-item:focus,
+    .sort-btn:focus, .filter-btn:focus, .cat-dd-btn:focus, .season-tab:focus,
+    .btn-back:focus, .btn-back-sm:focus, .btn-primary:focus, .btn-ghost-sm:focus {
+      outline:2px solid var(--acc) !important; outline-offset:2px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="tb-brand"><div class="dot"></div><span>StreamCore</span></div>
+  <div class="tb-right">
+    <span class="tb-time" id="tb-time"></span>
+    <div class="tb-wc">
+      <button onclick="api.winMin()"><svg viewBox="0 0 10 1"><rect width="10" height="1" rx=".5" fill="currentColor"/></svg></button>
+      <button onclick="api.winMax()"><svg viewBox="0 0 10 10"><rect x=".5" y=".5" width="9" height="9" rx="1" fill="none" stroke="currentColor"/></svg></button>
+      <button class="wc-x" onclick="api.winClose()"><svg viewBox="0 0 10 10"><line x1="1" y1="1" x2="9" y2="9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/><line x1="9" y1="1" x2="1" y2="9" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg></button>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LOGIN ═══ -->
+<div id="sc-login" class="screen active">
+  <div class="bg-orbs"><div class="orb o1"></div><div class="orb o2"></div></div>
+  <div class="login-card">
+    <div class="login-logo"><div class="dot lg"></div><span>StreamCore</span></div>
+    <p class="login-sub">Connectez votre service IPTV</p>
+    <div id="saved-accs"></div>
+    <div id="login-form">
+      <div class="field"><label>URL Serveur</label><input id="f-url" type="text" placeholder="http://serveur.com:8080"/></div>
+      <div class="field-row">
+        <div class="field"><label>Utilisateur</label><input id="f-user" type="text" placeholder="username"/></div>
+        <div class="field"><label>Mot de passe</label><input id="f-pass" type="password" placeholder="••••••••"/></div>
+      </div>
+      <div id="login-err" class="err hide"></div>
+      <button id="btn-login" class="btn-primary" onclick="doLogin()">Se connecter</button>
+    </div>
+    <button id="btn-add-acc" class="btn-ghost hide" onclick="showLoginForm()">+ Ajouter un compte</button>
+  </div>
+</div>
+
+<!-- ═══ PROFILES ═══ -->
+<div id="sc-profiles" class="screen">
+  <div class="bg-orbs"><div class="orb o1"></div><div class="orb o2"></div></div>
+  <div class="profiles-wrap">
+    <h1 class="profiles-title">Qui regarde ?</h1>
+    <div class="profiles-grid" id="profiles-grid"></div>
+    <button class="btn-ghost" style="width:auto;padding:10px 24px" onclick="openManageProfiles()">Gérer les profils</button>
+  </div>
+</div>
+
+<!-- ═══ HOME ═══ -->
+<div id="sc-home" class="screen">
+  <div class="home-bg" id="home-bg"></div>
+  <div class="home-top">
+    <span class="home-greeting" id="home-greeting"></span>
+    <span class="home-clock" id="home-clock"></span>
+  </div>
+  <div class="home-grid">
+    <div class="htile htile-live" onclick="goSection('live')">
+      <div class="htile-glow"></div>
+      <svg class="htile-ico" viewBox="0 0 56 56" fill="none"><circle cx="28" cy="28" r="7" fill="white"/><circle cx="28" cy="28" r="16" stroke="white" stroke-width="2.5"/><circle cx="28" cy="28" r="25" stroke="white" stroke-width="1.5" opacity=".35"/></svg>
+      <div class="htile-label">Live TV</div>
+      <div class="htile-sub" id="home-live-sub">Chaînes en direct</div>
+      <div class="htile-live-dot"><span></span>EN DIRECT</div>
+    </div>
+    <div class="htile htile-movies" onclick="goSection('movies')">
+      <div class="htile-glow"></div>
+      <svg class="htile-ico" viewBox="0 0 56 56" fill="none"><rect x="5" y="12" width="46" height="32" rx="4" stroke="white" stroke-width="2.5"/><path d="M23 21l14 7-14 7V21z" fill="white"/></svg>
+      <div class="htile-label">Films</div>
+      <div class="htile-sub" id="home-movies-sub">Catalogue VOD</div>
+    </div>
+    <div class="htile htile-series" onclick="goSection('series')">
+      <div class="htile-glow"></div>
+      <svg class="htile-ico" viewBox="0 0 56 56" fill="none"><rect x="5" y="12" width="46" height="32" rx="4" stroke="white" stroke-width="2.5"/><line x1="5" y1="26" x2="51" y2="26" stroke="white" stroke-width="1.5"/><line x1="19" y1="12" x2="19" y2="44" stroke="white" stroke-width="1.5"/></svg>
+      <div class="htile-label">Séries</div>
+      <div class="htile-sub" id="home-series-sub">Catalogue VOD</div>
+    </div>
+    <div class="htile htile-epg" onclick="goSection('epg')">
+      <div class="htile-glow"></div>
+      <svg class="htile-ico" viewBox="0 0 56 56" fill="none"><rect x="5" y="10" width="46" height="36" rx="4" stroke="white" stroke-width="2.5"/><line x1="5" y1="22" x2="51" y2="22" stroke="white" stroke-width="1.5"/><rect x="11" y="29" width="12" height="10" rx="2" fill="white" opacity=".7"/><rect x="29" y="29" width="16" height="4" rx="2" fill="white" opacity=".4"/><rect x="29" y="35" width="10" height="4" rx="2" fill="white" opacity=".3"/></svg>
+      <div class="htile-label">Guide TV</div>
+      <div class="htile-sub">Programme EPG</div>
+    </div>
+    <div class="htile htile-youtube" onclick="goSection('youtube')">
+      <div class="htile-glow"></div>
+      <svg class="htile-ico" viewBox="0 0 56 56" fill="none"><rect x="3" y="12" width="50" height="32" rx="7" stroke="white" stroke-width="2.5"/><path d="M23 21l14 7-14 7V21z" fill="white"/></svg>
+      <div class="htile-label">YouTube</div>
+      <div class="htile-sub">Sans publicité</div>
+    </div>
+    <div class="htile htile-stats" onclick="goSection('stats')">
+      <div class="htile-glow"></div>
+      <svg class="htile-ico" viewBox="0 0 56 56" fill="none"><rect x="7" y="32" width="10" height="17" rx="2" fill="white"/><rect x="23" y="22" width="10" height="27" rx="2" fill="white" opacity=".75"/><rect x="39" y="10" width="10" height="39" rx="2" fill="white" opacity=".5"/></svg>
+      <div class="htile-label">Stats</div>
+      <div class="htile-sub">Votre activité</div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ LIVE TV ═══ -->
+<div id="sc-live" class="screen">
+  <div class="live-layout">
+    <div class="live-sidebar">
+      <div class="live-sb-top">
+        <button class="btn-back-sm" onclick="goHome()"><svg viewBox="0 0 20 20" fill="none"><path d="M12 5l-5 5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Accueil</button>
+        <div class="live-cat-nav">
+          <button onclick="prevCat()"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+          <span id="live-cat-name">Toutes</span>
+          <button onclick="nextCat()"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+        </div>
+        <div class="live-search-box">
+          <svg viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+          <input id="live-sq" type="text" placeholder="Rechercher…" oninput="filterLive(this.value)"/>
+        </div>
+      </div>
+      <div class="live-ch-list" id="live-ch-list"></div>
+    </div>
+    <div class="live-center">
+      <div class="live-player-box" id="live-player-box">
+        <div class="live-placeholder" id="live-placeholder">
+          <svg viewBox="0 0 48 48" fill="none"><circle cx="24" cy="24" r="8" fill="rgba(255,255,255,.15)"/><circle cx="24" cy="24" r="18" stroke="rgba(255,255,255,.15)" stroke-width="2"/></svg>
+          <p>Sélectionnez une chaîne</p>
+        </div>
+      </div>
+      <div class="live-ctrl" id="live-ctrl">
+        <span id="live-ctrl-name"></span>
+        <div class="live-ctrl-btns">
+          <button id="btn-live-pip" class="ctrl-btn" onclick="toggleLivePip()" title="PiP">
+            <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="10" y="10" width="7" height="5" rx="1" fill="currentColor" opacity=".7"/></svg>PiP
+          </button>
+          <button class="ctrl-btn" onclick="toggleTimeshift()" id="btn-ts" title="Timeshift">
+            <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="7.5" stroke="currentColor" stroke-width="1.3"/><path d="M10 6v4l-2.5 2.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Timeshift
+          </button>
+          <button class="ctrl-btn" onclick="startRecord()" id="btn-rec" title="Enregistrer">
+            <svg viewBox="0 0 20 20" fill="none"><circle cx="10" cy="10" r="5" fill="currentColor"/><circle cx="10" cy="10" r="8" stroke="currentColor" stroke-width="1.3"/></svg>REC
+          </button>
+          <button class="ctrl-btn ctrl-stop" onclick="stopLive()">
+            <svg viewBox="0 0 20 20" fill="none"><rect x="5" y="5" width="10" height="10" rx="1.5" fill="currentColor"/></svg>Stop
+          </button>
+        </div>
+      </div>
+    </div>
+    <div class="live-info" id="live-info">
+      <div class="li-status" id="li-status"></div>
+      <div class="li-logo" id="li-logo"></div>
+      <div class="li-name" id="li-name">—</div>
+      <div class="li-cat" id="li-cat"></div>
+      <div class="li-epg-now" id="li-epg-now"></div>
+      <div class="li-epg-next" id="li-epg-next"></div>
+    </div>
+  </div>
+</div>
+
+<!-- ═══ VOD (films / series) ═══ -->
+<div id="sc-vod" class="screen">
+  <div class="vod-hero" id="vod-hero">
+    <div class="vod-hero-bg" id="vod-hero-bg"></div>
+    <div class="vod-hero-overlay"></div>
+    <div class="vod-hero-content" id="vod-hero-content"></div>
+  </div>
+  <div class="vod-toolbar">
+    <button class="btn-back-sm" onclick="goHome()"><svg viewBox="0 0 20 20" fill="none"><path d="M12 5l-5 5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+    <span class="vod-sec-title" id="vod-sec-title">Films</span>
+    <div class="vod-search-box">
+      <svg viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <input id="vod-sq" type="text" placeholder="Rechercher…" oninput="filterVod(this.value)"/>
+    </div>
+    <div class="vod-cats-wrap" id="vod-cats-wrap"></div>
+    <div class="vod-sort-wrap">
+      <button class="sort-btn active" onclick="setVodSort('name',this)">A–Z</button>
+      <button class="sort-btn" onclick="setVodSort('rating',this)">★</button>
+      <button class="sort-btn" onclick="setVodSort('year',this)">Année</button>
+      <button class="sort-btn" onclick="setVodSort('new',this)">Nouveau</button>
+    </div>
+    <button class="filter-btn" id="btn-favs" onclick="toggleFavFilter()">★ Favoris</button>
+    <button class="filter-btn" id="btn-later" onclick="toggleLaterFilter()">⏱ À voir</button>
+  </div>
+  <div id="continue-wrap"></div>
+  <div class="vod-rows" id="vod-rows"></div>
+</div>
+
+<!-- ═══ SERIE DETAIL ═══ -->
+<div id="sc-serie" class="screen">
+  <div class="serie-hero" id="serie-hero"></div>
+  <div class="serie-body" id="serie-body"></div>
+</div>
+
+<!-- ═══ EPG ═══ -->
+<div id="sc-epg" class="screen">
+  <div class="epg-header">
+    <button class="btn-back-sm" onclick="goHome()"><svg viewBox="0 0 20 20" fill="none"><path d="M12 5l-5 5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>Accueil</button>
+    <h2>Guide des programmes</h2>
+    <div class="epg-date-nav">
+      <button onclick="epgPrevDay()"><svg viewBox="0 0 16 16" fill="none"><path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+      <span id="epg-date-label">Aujourd'hui</span>
+      <button onclick="epgNextDay()"><svg viewBox="0 0 16 16" fill="none"><path d="M6 3l5 5-5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+    </div>
+    <div class="epg-search-box">
+      <svg viewBox="0 0 16 16" fill="none"><circle cx="7" cy="7" r="4.5" stroke="currentColor" stroke-width="1.2"/><path d="M11 11l3 3" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/></svg>
+      <input id="epg-sq" type="text" placeholder="Chercher un programme…" oninput="filterEpg(this.value)"/>
+    </div>
+  </div>
+  <div class="epg-grid-wrap" id="epg-grid-wrap">
+    <div class="loader"><div class="spinner"></div><span>Chargement du guide…</span></div>
+  </div>
+</div>
+
+<!-- ═══ YOUTUBE ═══ -->
+<div id="sc-youtube" class="screen">
+  <div class="yt-bar">
+    <button class="btn-back-sm" onclick="closeYoutube()"><svg viewBox="0 0 20 20" fill="none"><path d="M12 5l-5 5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+    <div class="yt-input-wrap">
+      <input id="yt-sq" type="text" placeholder="Rechercher sur YouTube sans pub…" onkeydown="if(event.key==='Enter')ytSearch(this.value)"/>
+      <button onclick="ytSearch(document.getElementById('yt-sq').value)">Rechercher</button>
+    </div>
+    <div id="yt-insts"></div>
+  </div>
+  <div style="flex:1;background:#000"></div>
+</div>
+
+<!-- ═══ STATS ═══ -->
+<div id="sc-stats" class="screen">
+  <div class="simple-hd">
+    <button class="btn-back-sm" onclick="goHome()"><svg viewBox="0 0 20 20" fill="none"><path d="M12 5l-5 5 5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg></button>
+    <h1>Statistiques</h1>
+  </div>
+  <div class="stats-body" id="stats-body"></div>
+</div>
+
+<!-- ═══ MODAL DETAIL ═══ -->
+<div id="modal-detail" class="modal hide">
+  <div class="modal-bg" onclick="closeDetail()"></div>
+  <div class="modal-box" id="modal-box"></div>
+</div>
+
+<!-- ═══ MODAL PROFILES ═══ -->
+<div id="modal-profiles" class="modal hide">
+  <div class="modal-bg" onclick="closeManageProfiles()"></div>
+  <div class="modal-box" id="modal-profiles-box"></div>
+</div>
+
+<!-- ═══ MODAL SOUS-TITRES / AUDIO ═══ -->
+<div id="modal-tracks" class="modal hide">
+  <div class="modal-bg" onclick="closeTracks()"></div>
+  <div class="modal-box modal-tracks-box" id="modal-tracks-box"></div>
+</div>
+
+<!-- ═══ AUTOPLAY COUNTDOWN ═══ -->
+<div id="autoplay-bar" class="autoplay-bar hide">
+  <span id="autoplay-title"></span>
+  <div class="autoplay-btns">
+    <button onclick="cancelAutoplay()">Annuler</button>
+    <button class="btn-primary-sm" onclick="doAutoplay()">Épisode suivant (<span id="autoplay-count">5</span>s)</button>
+  </div>
+</div>
+
+<!-- ═══ NOW PLAYING ═══ -->
+<div id="now-playing" class="now-playing hide">
+  <div class="np-dot"></div>
+  <div class="np-info">
+    <div id="np-title">—</div>
+    <div id="np-sub">—</div>
+  </div>
+  <div class="np-acts">
+    <button id="btn-pip" onclick="togglePip()">
+      <svg viewBox="0 0 20 20" fill="none"><rect x="2" y="4" width="16" height="12" rx="1.5" stroke="currentColor" stroke-width="1.3"/><rect x="10" y="10" width="7" height="5" rx="1" fill="currentColor" opacity=".7"/></svg>PiP
+    </button>
+    <button onclick="openTracks()">
+      <svg viewBox="0 0 20 20" fill="none"><path d="M3 6h14M3 10h10M3 14h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>Pistes
+    </button>
+    <button class="np-stop" onclick="doStop()">
+      <svg viewBox="0 0 20 20" fill="none"><rect x="5" y="5" width="10" height="10" rx="1.5" fill="currentColor"/></svg>Stop
+    </button>
+  </div>
+</div>
+
+<!-- ═══ TOAST ═══ -->
+<div id="toast" class="toast hide"></div>
+
+<script src="shim.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

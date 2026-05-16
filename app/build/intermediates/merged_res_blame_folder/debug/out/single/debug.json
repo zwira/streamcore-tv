@@ -1,7 +1,7 @@
 [
     {
-        "merged": "/Users/yalesdjemmane/.gradle/daemon/8.6/com.streamcore.tv.app-merged_res-8:/layout_activity_main.xml.flat",
-        "source": "/Users/yalesdjemmane/.gradle/daemon/8.6/com.streamcore.tv.app-main-10:/layout/activity_main.xml"
+        "merged": "com.streamcore.tv.app-merged_res-8:/drawable_ic_launcher.xml.flat",
+        "source": "com.streamcore.tv.app-main-10:/drawable/ic_launcher.xml"
     },
     {
         "merged": "com.streamcore.tv.app-merged_res-8:/mipmap-mdpi_ic_launcher.png.flat",
@@ -12,12 +12,8 @@
         "source": "com.streamcore.tv.app-main-10:/mipmap-xxhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/yalesdjemmane/.gradle/daemon/8.6/com.streamcore.tv.app-merged_res-8:/drawable_ic_launcher.xml.flat",
-        "source": "/Users/yalesdjemmane/.gradle/daemon/8.6/com.streamcore.tv.app-main-10:/drawable/ic_launcher.xml"
-    },
-    {
-        "merged": "/Users/yalesdjemmane/.gradle/daemon/8.6/com.streamcore.tv.app-merged_res-8:/layout_activity_player.xml.flat",
-        "source": "/Users/yalesdjemmane/.gradle/daemon/8.6/com.streamcore.tv.app-main-10:/layout/activity_player.xml"
+        "merged": "com.streamcore.tv.app-merged_res-8:/xml_file_paths.xml.flat",
+        "source": "com.streamcore.tv.app-main-10:/xml/file_paths.xml"
     },
     {
         "merged": "com.streamcore.tv.app-merged_res-8:/mipmap-xxxhdpi_ic_launcher.png.flat",
@@ -28,8 +24,12 @@
         "source": "com.streamcore.tv.app-main-10:/mipmap-xhdpi/ic_launcher.png"
     },
     {
-        "merged": "/Users/yalesdjemmane/.gradle/daemon/8.6/com.streamcore.tv.app-merged_res-8:/xml_file_paths.xml.flat",
-        "source": "/Users/yalesdjemmane/.gradle/daemon/8.6/com.streamcore.tv.app-main-10:/xml/file_paths.xml"
+        "merged": "com.streamcore.tv.app-merged_res-8:/layout_activity_player.xml.flat",
+        "source": "com.streamcore.tv.app-main-10:/layout/activity_player.xml"
+    },
+    {
+        "merged": "com.streamcore.tv.app-merged_res-8:/layout_activity_main.xml.flat",
+        "source": "com.streamcore.tv.app-main-10:/layout/activity_main.xml"
     },
     {
         "merged": "com.streamcore.tv.app-merged_res-8:/mipmap-hdpi_ic_launcher.png.flat",

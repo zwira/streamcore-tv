@@ -35,6 +35,7 @@ public class MainActivity extends Activity {
         s.setAllowFileAccess(true);
         webView.addJavascriptInterface(new Bridge(), "AndroidBridge");
         webView.setWebViewClient(new WebViewClient());
+        webView.clearCache(true);
         webView.loadUrl("file:///android_asset/www/index.html");
     }
 
