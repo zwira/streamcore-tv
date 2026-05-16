@@ -56,6 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
       };
     }
 
+
+    // Afficher la version en haut à droite
+    const vbadge = document.createElement('div');
+    vbadge.style.cssText = 'position:fixed;top:10px;right:16px;z-index:9999;font-size:13px;color:rgba(255,255,255,.3);font-family:Inter,sans-serif;pointer-events:none;';
+    vbadge.textContent = 'v1.6';
+    document.body.appendChild(vbadge);
     // Android back button
     window.onAndroidBack = () => {
       for (const m of ['modal-detail','modal-profiles','modal-pin','modal-mood']) {
